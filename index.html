@@ -1,133 +1,249 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <title>Tropicália</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Montel Fish</title>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <style>
+    /* Fundo e fontes */
+    body {
+      background: #0a0a23;
+      color: #fff;
+      font-family: "Poppins", sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Fade-in animado */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease forwards;
+    }
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Cabeçalho */
+    header {
+      background: transparent;
+      padding: 1rem 0;
+    }
+    .nav-img { height: 50px; border-radius: 10px; }
+    .nav-link { color: #fff !important; font-weight: 600; transition: color .3s; }
+    .nav-link:hover { color: #ffb400 !important; }
+
+    /* Seção inicial */
+    #inicio {
+      background: linear-gradient(135deg, #162447, #1f4068);
+      min-height: 80vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      padding: 2rem;
+    }
+    #inicio h1 {
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      color: #ffd166;
+      margin-bottom: .5rem;
+    }
+    #inicio h2 {
+      font-size: 1.6rem;
+      opacity: .85;
+      margin-bottom: 2rem;
+      letter-spacing: 1.5px;
+    }
+    .btn-montel {
+      background: #ffd166;
+      color: #0a0a23;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      transition: all .4s;
+      box-shadow: 0 0 10px #ffd16680;
+    }
+    .btn-montel:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 20px #ffd166aa;
+    }
+
+    /* Sobre */
+    #sobre {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin: 4rem 0;
+    }
+    #sobre .sobre-container {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 2rem;
+      align-items: center;
+    }
+    #sobre img {
+      border-radius: 20px;
+      max-width: 350px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      transition: transform .4s;
+    }
+    #sobre img:hover { transform: scale(1.05); }
+    #sobre h2 { color: #ffd166; margin-bottom: 1rem; }
+    #sobre p { color: #ddd; font-size: 1.05rem; line-height: 1.7; }
+
+    @media(min-width: 768px){
+      #sobre .sobre-container { flex-direction: row; }
+    }
+
+    /* Galeria estilo mosaico */
+    #galeria {
+      margin: 4rem 0;
+    }
+    #galeria h2 { text-align: center; color: #ffd166; margin-bottom: 2rem; }
+    .fundo-galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .fundo-galeria img {
+      width: 100%;
+      border-radius: 15px;
+      filter: grayscale(30%);
+      transition: all .4s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    .fundo-galeria img:hover {
+      filter: grayscale(0%);
+      transform: scale(1.07);
+    }
+
+    /* Contato */
+    #contato {
+      background: #1f4068;
+      padding: 3rem 1rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      margin-bottom: 4rem;
+    }
+    .formulario {
+      background: #fff;
+      color: #0a0a23;
+      padding: 2rem;
+      border-radius: 15px;
+    }
+    .formulario input, .formulario textarea {
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+    .formulario button {
+      background: #ffd166;
+      color: #0a0a23;
+      border-radius: 50px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      box-shadow: 0 0 10px #ffd16680;
+    }
+    .formulario button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px #ffd166aa;
+    }
+
+    /* Rodapé */
+    footer {
+      text-align: center;
+      color: #fff;
+      padding: 2rem 1rem;
+      border-top: 1px solid rgba(255,255,255,.2);
+    }
+    footer i { margin: 0 10px; transition: transform .2s; cursor: pointer; }
+    footer i:hover { transform: scale(1.3); color: #ffb400; }
+  </style>
 </head>
-
 <body>
-    <header class=" p-5">
+  <header class="fade-in">
+    <nav class="container d-flex justify-content-between align-items-center">
+      <img src="img/logomonet.png" class="nav-img" alt="Montel Fish Logo" />
+      <ul class="nav gap-3">
+        <li class="nav-item"><a class="nav-link" href="#inicio">Início</a></li>
+        <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+        <li class="nav-item"><a class="nav-link" href="#galeria">Galeria</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
 
-        <nav class="container d-flex justify-content-between align-items-center" >
-            <img src="img/cameras.jfif" class="nav-img " loading="lazy">
-            <ul class="nav mt-5">
-                <li class="nav-item"><a class="nav-link" href="#inicio">Início</a></li>
-                <li class="nav-item"><a class="nav-link" href="#galeria">Galeria</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
-            </ul>
+  <main class="container">
+    <!-- INÍCIO -->
+    <section id="inicio" class="fade-in">
+      <div>
+        <h2>Bem-vindo ao universo de</h2>
+        <h1>Montel Fish</h1>
+        <button class="btn-montel mt-4">Explore agora</button>
+      </div>
+    </section>
 
-            <div id="acessibilidade" class="menu-acessibilidade">
-                         
-                    <button id="aumentar-fonte" class="btn btn-primary fw-bold">A +</button>
-                    
-                    <button id="diminuir-fonte" class="btn btn-primary fw-bold">A -</button>
-                    
-                </div>
-            </div>
-            
-        </nav>
-       
-    </header>
+    <!-- SOBRE -->
+    <section id="sobre" class="fade-in">
+      <div class="sobre-container">
+        <img src="img/montel.avif" alt="Montel Fish" />
+        <div>
+          <h2>Sobre Montel Fish</h2>
+          <p>Montel Fish é um cantor e compositor conhecido por seu estilo único que mistura rap, R&B e melodias suaves. Com letras introspectivas e emocionantes, ele conquistou fãs fiéis e vem ganhando destaque na cena musical internacional.</p>
+        </div>
+      </div>
+    </section>
 
+    <!-- GALERIA -->
+    <section id="galeria" class="fade-in">
+      <h2>Galeria</h2>
+      <div class="fundo-galeria">
+        <img src="img/allbum1.jfif" alt="Álbum 1" />
+        <img src="img/allbum2.jpg" alt="Álbum 2" />
+        <img src="img/clipe.jfif" alt="Clipe 1" />
+        <img src="img/images.jfif" alt="Clipe 2" />
+      </div>
+    </section>
 
-    <main class="container my-5">
+    <!-- CONTATO -->
+    <section id="contato" class="fade-in">
+      <div class="formulario mx-auto col-md-8">
+        <h2>Entre em contato</h2>
+        <form>
+          <div class="mb-3">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" id="nome" placeholder="Digite seu nome" />
+          </div>
+          <div class="mb-3">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Digite seu email" />
+          </div>
+          <div class="mb-3">
+            <label for="mensagem">Mensagem</label>
+            <textarea class="form-control" id="mensagem" rows="4" placeholder="Escreva sua mensagem"></textarea>
+          </div>
+          <button type="submit" class="btn w-100 mt-3">Enviar</button>
+        </form>
+      </div>
+    </section>
+  </main>
 
-        <section id="inicio" class="my-5">
-            <div class="inicio-fundo d-flex justify-content-between align-items-center">
-                <div class="esquerda-conteudo">
-                    <h1 class="display-4 text-white fst-italic fw-bold">Boas-vindas a</h1>
-                    <img src="img/download (1).jfif" class="mb-3" width="563"
-                        height="278" loading="lazy">
-                    <a href="#tropicalia"
-                        class="btn btn-primary btn-lg botao-inicio fw-semibold">Quero
-                        conhecer!</a>
-                </div>
-                <img src="img" alt="A imagem apresenta o grupo musical Os mutantes, sao tres pessoas cantando em  dois microfones" title="Os mutantes - CC0 Domínio Público / Acervo Arquivo Nacional" class="img-fluid img-inicio">
+  <footer class="fade-in">
+    <p>Siga nas redes:</p>
+    <div>
+      <i class="bi bi-instagram"></i>
+      <i class="bi bi-tiktok"></i>
+      <i class="bi bi-youtube"></i>
+    </div>
+    <p class="mt-3">Desenvolvido por Start by Alura. Projeto fictício sem fins comerciais.</p>
+  </footer>
 
-              </div>
-        </section>
-
-        <section id="tropicalia" class="my-5 pt-6 secao-tropicalia">
-            <div class="container d-flex align-items-center ">
-                <div class="col-4 d-flex justify-content-center">
-                    <img src="img/download.jfif" class="rounded-pill" alt="" width="273" height="331" loading="lazy">
-                </div>
-                <div class="col-5">
-                    <h2>O que é a fotográfia?</h2>
-                    <p class="p-2">Fotografia é a arte e a técnica de criar imagens fixas através da ação da luz em uma superfície sensível, como um filme ou um sensor digital. É um meio de expressão, registro e comunicação, capaz de capturar momentos, transmitir emoções e documentar a realidade. </p>
-                </div>
-            </div>
-        </section>
-
-        <section id="galeria">
-            <h2 class="text-center pt-5">Galeria</h2>
-            <div class="container p-3 mt-3 fundo-galeria ">
-
-                <div class="row justify-content-md-center">
-                    <div class="col-md-4">
-                        <img src="img/fotos.jpg" loading="lazy">
-                    </div>
-                    <div class="col-md-4">
-                        <img src="img/fotografia.jfif" class="img-fluid rounded-5"
-                            loading="lazy">
-                    </div>
-                </div>
-                <div class="row mt-4  justify-content-md-center">
-                    <div class="col-md-4">
-                        <img src="img/image-16.png" class="img-fluid rounded-5" loading="lazy">
-                    </div>
-                    <div class="col-md-4">
-                        <img src="img/HotSiteImage.jpg" loading="lazy">
-                    </div>
-                </div>
-             </div>
-        </section>
-
-        <section id="contato">
-            <div class="container p-5 d-flex justify-content-center">
-                <div class="col-md-8 col-lg-10 rounded-5 formulario"> <!-- Caixa do formulário com 60% de largura -->
-                    <h2 class="mb-3">Entre em contato</h2>
-                    <form>
-                        <div class="form-group mb-3">
-                            <label for="nome">Nome</label>
-                            <input type="text" id="nome" name="nome" class="form-control rounded-3 mt-1"
-                                placeholder="Digite seu nome completo">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control rounded-3 mt-1"
-                                placeholder="Digite seu email">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="mensagem">Mensagem</label>
-                            <textarea id="mensagem" name="mensagem" class="form-control rounded-4 mt-2" rows="4"
-                                placeholder="Escreva sua mensagem"></textarea>
-                        </div>
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary btn-lg rounded-pill">Enviar
-                                mensagem</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer class="text-center p-3 fst-italic">
-        <p>Acesse nossas redes:</p>
-        <i class="bi bi-whatsapp"></i>
-        <i class="bi bi-instagram"></i>
-        <i class="bi bi-tiktok"></i>
-        <p class="mt-3">Desenvolvido por Start by Alura. Projeto fictício sem fins comerciais.</p>
-    </footer>
-    
-    <script src="script.js"></script>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
